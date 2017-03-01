@@ -1,12 +1,13 @@
 <section class="hero" id="language">
   <div class="hero-body">
     <div class="container">
-      <h1 class="language-name">
-        <%= @language.name %>
+      <h1 class="title language-name"><%= @language.name %>
       </h1>
       <h2 class="subtitle is-1">
         <%= @language.description %>
       </h2>
+       <a href="<%= edit_language_path(@language) %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
+      <br>
     </div>
   </div>
 </section>

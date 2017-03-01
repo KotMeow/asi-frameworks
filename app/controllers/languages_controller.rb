@@ -11,12 +11,26 @@ class LanguagesController < ApplicationController
         @language = Language.new
     end
     
+    def edit
+        @language = Language.find(params[:id])
+    end
+    
     def create
         @language = Language.new(language_params)
         if @language.save
             redirect_to @language
         else
             render 'new'
+        end
+    end
+    
+    def update
+        @language = Language.find(params[:id])
+ 
+        if @language.update(language_params)
+            redirect_to @language
+        else
+            render 'edit'
         end
     end
     
