@@ -1,0 +1,27 @@
+<%= form_for @language do |f| %>
+ <% if @language.errors.any? %>
+   <div class="notification is-danger" id="error_explanation">
+ <ul>
+        <% @language.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+</div>
+
+  <% end %>
+  
+  <p class="control">
+    <%= f.label :name, :class => 'label' %>
+    <%= f.text_field :name, :class => 'input' %>
+  </p>
+  
+  <p class="control">
+    <%= f.label :description, :class => 'label' %>
+    <%= f.text_area :description, :class => 'input' %>
+  </p>
+
+  <p class="control">
+    <%= f.submit 'Submit', :class => 'button is-primary' %>
+  </p>
+   
+<% end %>

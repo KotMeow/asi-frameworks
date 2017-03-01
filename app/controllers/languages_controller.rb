@@ -34,6 +34,13 @@ class LanguagesController < ApplicationController
         end
     end
     
+    def destroy
+        @language = Language.find(params[:id])
+        @language.destroy
+ 
+        redirect_to languages_path
+    end
+    
     private
         def language_params
             params.require(:language).permit(:name, :description)
