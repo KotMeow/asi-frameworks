@@ -13,13 +13,14 @@
       <div class="container">
          <nav class="nav" style="margin-bottom:50px;">
             <div class="nav-left">
-               <a class="nav-item nav-brand" href="/">Frameworks</a>
+            <a class="nav-item nav-brand" href="/">Frameworks</a>
             </div>
             <div class="nav-center">
             </div>
             <span class="nav-toggle">
             <span></span> <span></span> <span></span> </span>
             <div class="nav-right nav-menu">  
+               <%= link_to 'New language', new_language_path,  :class=>"nav-item is-tab" %>
                <a class="nav-item is-tab">
                About
                </a>

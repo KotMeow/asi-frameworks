@@ -8,12 +8,16 @@ class LanguagesController < ApplicationController
     end
     
     def new
+        @language = Language.new
     end
     
     def create
-        @language = Language.new(params[:language].permit(:name, :description))
-        @language.save
-        redirect_to @language
+        @language = Language.new(language_params)
+        if @language.save
+            redirect_to @language
+        else
+            render 'new'
+        end
     end
     
     private
