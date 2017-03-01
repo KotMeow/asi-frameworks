@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Frameworks</title>
-    <%= csrf_meta_tags %>
+   <head>
+      <title>Frameworks</title>
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   </head>
+   <body>
+     <style>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+       </style>
+      <div class="container">
+         <nav class="nav" style="margin-bottom:50px;">
+            <div class="nav-left">
+               <a class="nav-item nav-brand" href="/">Frameworks</a>
+            </div>
+            <div class="nav-center">
+            </div>
+            <span class="nav-toggle">
+            <span></span> <span></span> <span></span> </span>
+            <div class="nav-right nav-menu">  
+               <a class="nav-item is-tab">
+               About
+               </a>
+               <a class="nav-item is-tab">
+               <span class="icon">
+               <i class="fa fa-github"></i>
+               </span>
+               </a>
+            </div>
+         </nav>
+               </div>
+         <%= yield %>
 
-  <body>
-    <%= yield %>
-  </body>
+   </body>
 </html>

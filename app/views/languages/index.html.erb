@@ -1,0 +1,60 @@
+<div class="container">
+   <p class="title is-1" id="test">Hello in Frameworks!</p>
+   <p class="subtitle is-3">Place to share informations about frameworks.</p>
+</div>
+
+
+<% @languages.each_with_index do |langauage,index| %>
+ <div class="framework">
+  <section class="hero" id="<%= index %>">
+   <div class="hero-body">
+      <div class="container">
+         <h1 class="title is-2">
+           <%= langauage.name %> 
+         </h1>
+         <h2 class="subtitle is-4">
+           <%= langauage.description %>
+         </h2>
+         <a href="<%= language_path(langauage) %>"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+      </div>
+   </div>
+</section>
+<div class="container">
+   <div class="columns is-multiline">
+      <div class="column is-one-third">
+         <div class="card">
+            <header class="card-header">
+               <p class="card-header-title">
+                  Spring Framework 
+               </p>
+            </header>
+            <div class="card-content">
+               <div class="content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                     consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                  </p>
+                  <p>Type: <strong>Back-end</strong></p>
+                  <p>Release year: <strong>2009</strong></p>
+               </div>
+            </div>
+            <footer class="card-footer">
+               <a class="card-footer-item">Save</a>
+               <a class="card-footer-item">Edit</a>
+               <a class="card-footer-item">Delete</a>
+            </footer>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+  <% end %>
+<script>
+var colors = ['is-primary', 'is-info', 'is-danger','is-warning', 'is-success', 'is-primary is-bold', 'is-success is-bold','is-warning is-bold','is-danger is-bold','is-primary is-bold','is-info is-bold' ];
+var elements = $('.framework').length;
+   for (var i = 0; i< elements; i++ ) {
+       var color = colors[Math.floor(Math.random()*colors.length)];
+       console.log(color);
+       $('#' + i).addClass(color);
+   }
+
+</script>
