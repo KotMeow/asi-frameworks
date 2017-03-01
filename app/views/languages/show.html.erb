@@ -12,6 +12,44 @@
       </div>
    </div>
 </section>
+<div class="container">
+<% @language.frameworks.each do |framework| %>
+  <p>
+    <strong>name:</strong>
+    <%= framework.name %>
+  </p>
+
+<% end %>
+   <p class="title is-2">Add new framework!</p>
+   <div class="columns">
+       <div class="column is-4">
+<%= form_for([@language, @language.frameworks.build]) do |f| %>
+  <p class="control">
+    <%= f.label :name, :class => 'label' %>
+    <%= f.text_field :name, :class => 'input' %>
+  </p>
+  
+  <p class="control">
+    <%= f.label :description, :class => 'label' %>
+    <%= f.text_area :description, :class => 'input' %>
+  </p>
+  
+    <p class="control">
+    <%= f.label :category, :class => 'label' %>
+    <%= f.text_field :category, :class => 'input' %>
+  </p>
+      <p class="control">
+    <%= f.label :year, :class => 'label' %>
+    <%= f.number_field :year, :class => 'input' %>
+  </p>
+  <p class="control">
+    <%= f.submit 'Submit', :class => 'button is-primary' %>
+  </p>
+<% end %>
+       </div>
+</div>
+</div>
+
 <div class="modal">
    <div class="modal-background"></div>
    <div class="modal-content">
