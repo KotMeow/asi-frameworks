@@ -1,5 +1,5 @@
 <div class="container">
-   <p class="title is-1" id="test">Hello in Frameworks!</p>
+   <p class="title is-1" id="test">Hello in Frameworks <%= current_user.name %>!</p>
    <p class="subtitle is-3">Place to share informations about frameworks.</p>
 
 <% flash.each do |message_type, message| %>

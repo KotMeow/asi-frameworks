@@ -29,6 +29,7 @@
 
                 <% if logged_in? %>
                <%= link_to 'New language', new_language_path,  :class=>"nav-item is-tab" %>
+               <%= link_to "Edit Account", edit_user_path(current_user), class: "nav-item is-tab" %>
                <%= link_to "Log out", logout_path, method: "delete", class: "nav-item is-tab" %>
                <% else %>
                <%= link_to "Sign up now!", signup_path, class: "nav-item is-tab" %>
