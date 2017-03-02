@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20170302214029) do
   create_table "frameworks", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "kind"
     t.integer  "year"
     t.integer  "language_id"
     t.datetime "created_at",  null: false
