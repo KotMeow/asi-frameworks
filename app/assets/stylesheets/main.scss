@@ -24,7 +24,8 @@
      border: solid 4px $primary;
  }
  
- .fa-times-circle, .fa-plus {
+ .fa-times-circle,
+ .fa-plus {
      cursor: pointer;
  }
  
@@ -36,4 +37,17 @@
  
  a.removeFramework {
      color: $danger;
+ }
+ 
+ .Top {
+     position: fixed;
+     bottom: 20px;
+     right: 20px;
+     padding: 3px 5px;
+     color: $grey;
+     cursor: pointer;
+     display: none;
+     i {
+         font-size: 3rem;
+     }
  }

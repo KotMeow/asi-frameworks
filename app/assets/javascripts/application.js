@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+var colors = ['is-primary', 'is-info', 'is-danger', 'is-warning', 'is-success', 'is-primary is-bold', 'is-success is-bold', 'is-warning is-bold', 'is-danger is-bold', 'is-info is-bold'];
+var borderColors = ['hsl(171, 100%, 41%)', 'hsl(217, 71%, 53%)', 'hsl(348, 100%, 61%)'
+                       , 'hsl(48, 100%, 67%)', 'hsl(141, 71%, 48%)', 'hsl(171, 100%, 41%)', 'hsl(141, 71%, 48%)', 'hsl(48, 100%, 67%)', 'hsl(348, 100%, 61%)', 'hsl(217, 71%, 53%)']
+$(window).scroll(function () {
+    if ($(this).scrollTop() >= 500) {
+        $(".Top").fadeIn();
+    }
+    else {
+        $(".Top").fadeOut();
+    }
+});

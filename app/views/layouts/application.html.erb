@@ -33,6 +33,13 @@
          </nav>
                </div>
          <%= yield %>
-
+      <span class='Top'><i class='fa fa-angle-up fa-2x'></i></span>
+      <script>
+       $(".Top").click(function () {
+    $("html,body").stop().animate({
+        scrollTop: 0
+    });
+});
+       </script>
    </body>
 </html>

@@ -14,7 +14,25 @@
    </div>
 </section>
 <div class="container">
-   <%= render @language.frameworks %>
+  <% @language.frameworks.each do |framework| %>
+   <section class="hero hero-framework">
+      <div class="hero-body">
+         <div class="container">
+            <h1 class="title">
+               <%= framework.name %> <small style="color: gray;"> <%= framework.year %></small>
+            </h1>
+            <h2 class="subtitle">
+               <%= framework.category %>
+            </h2>
+            <p><%= framework.description %></p>
+            <br>
+             <%= link_to '<i class="fa fa-cog"></i>'.html_safe, edit_language_framework_path(framework.language, framework) %>
+              <%= link_to '<i class="fa fa-times-circle"></i>'.html_safe, [framework.language, framework],
+               method: :delete, :class => 'removeFramework'%>
+         </div>
+      </div>
+   </section>
+   <% end %>
    <p class="title is-2" style="margin-top: 50px;" id="addTitle">Add new framework!</p>
    <div class="columns">
       <div class="column is-4">
@@ -78,9 +96,14 @@ $(function () {
 			scrollTop: $('#addTitle').offset().top
 		},'fast');
     });
-	var colors = ['is-primary', 'is-info', 'is-danger', 'is-warning', 'is-success', 'is-primary is-bold', 'is-success is-bold', 'is-warning is-bold', 'is-danger is-bold', 'is-primary is-bold', 'is-info is-bold'];
-	var color = colors[Math.floor(Math.random() * colors.length)];
+
+    var index = Math.floor(Math.random() * colors.length);
+	var color = colors[index];
 	$('#language').addClass(color);
+   var hero = $('.hero-framework');
+    for (var i=0;i<hero.length;i+=1){
+        hero[i].style.borderColor = borderColors[index];
+    }
 
 	$('#confirmFramework').on('click', function () {
 		$('#modalFramework').addClass('is-active');

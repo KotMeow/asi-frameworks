@@ -23,7 +23,7 @@
    <div class="columns is-multiline">
      <% language.frameworks.each do |framework| %>
       <div class="column is-one-third">
-         <div class="card" id="<%= index %>">
+         <div class="card group<%= index %>">
             <header class="card-header">
                <p class="card-header-title">
                   <%= framework.name %>
@@ -46,13 +46,16 @@
   <% end %>
 <script>
 $(function(){
-  var colors = ['is-primary', 'is-info', 'is-danger','is-warning', 'is-success', 'is-primary is-bold', 'is-success is-bold','is-warning is-bold','is-danger is-bold','is-primary is-bold','is-info is-bold' ];
 var elements = $('.framework').length;
-    var color = ' ';
    for (var i = 0; i< elements; i++ ) {
-    color = colors[Math.floor(Math.random()*colors.length)];
+       var index = Math.floor(Math.random()*colors.length);
+        var color = colors[index];
        $('#' + i).addClass(color);
-   }  
+       var hero = $('.group' + i);
+        for (var j=0;j<hero.length;j+=1){
+            hero[j].style.borderColor = borderColors[index];
+    };
+   };  
 });
 
 
