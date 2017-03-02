@@ -9,7 +9,13 @@ class FrameworksController < ApplicationController
             render 'languages/show' 
         else
             redirect_to language_path(@language)
+        end
     end
+    def destroy
+        @language = Language.find(params[:language_id])
+        @framework = @language.frameworks.find(params[:id])
+        @framework.destroy
+        redirect_to language_path(@language)
     end
     
     private

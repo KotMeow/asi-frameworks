@@ -1,0 +1,18 @@
+   <section class="hero hero-framework">
+      <div class="hero-body">
+         <div class="container">
+            <h1 class="title">
+               <%= framework.name %> <small style="color: gray;"> <%= framework.year %></small>
+                 
+            </h1>
+            <h2 class="subtitle">
+               <%= framework.category %>
+            </h2>
+            <p><%= framework.description %></p>
+             <br>
+              <%= link_to '<i class="fa fa-times-circle"></i>'.html_safe, [framework.language, framework],
+               method: :delete, :class => 'removeFramework'%>
+           
+         </div>
+      </div>
+   </section>

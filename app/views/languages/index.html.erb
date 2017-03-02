@@ -45,11 +45,15 @@
 </div>
   <% end %>
 <script>
-var colors = ['is-primary', 'is-info', 'is-danger','is-warning', 'is-success', 'is-primary is-bold', 'is-success is-bold','is-warning is-bold','is-danger is-bold','is-primary is-bold','is-info is-bold' ];
+$(function(){
+  var colors = ['is-primary', 'is-info', 'is-danger','is-warning', 'is-success', 'is-primary is-bold', 'is-success is-bold','is-warning is-bold','is-danger is-bold','is-primary is-bold','is-info is-bold' ];
 var elements = $('.framework').length;
+    var color = ' ';
    for (var i = 0; i< elements; i++ ) {
-       var color = colors[Math.floor(Math.random()*colors.length)];
+    color = colors[Math.floor(Math.random()*colors.length)];
        $('#' + i).addClass(color);
-   }
+   }  
+});
+
 
 </script>

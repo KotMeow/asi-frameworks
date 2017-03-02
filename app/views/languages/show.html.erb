@@ -6,6 +6,7 @@
          <h2 class="subtitle is-1">
             <%= @language.description %>
          </h2>
+         <i class="fa fa-plus" id="add"></i>
          <a href="<%= edit_language_path(@language) %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
          <i class="fa fa-times-circle" id="confirm"></i>
          <br>
@@ -13,7 +14,8 @@
    </div>
 </section>
 <div class="container">
-  <p class="title is-2" style="margin-top: 50px;">Add new framework!</p>
+   <%= render @language.frameworks %>
+   <p class="title is-2" style="margin-top: 50px;" id="addTitle">Add new framework!</p>
    <div class="columns">
       <div class="column is-4">
          <%= form_for([@language, Framework.new]) do |f| %>
@@ -27,24 +29,25 @@
          </div>
          <% end %>
          <p class="control">
-            <%= f.label :name, :class => 'label' %>
-            <%= f.text_field :name, :class => 'input' %>
+            <%= f.label :name, 'Name*', :class => 'label' %>
+            <%= f.text_field :name, :required => true,  :class => 'input' %>
          </p>
          <p class="control">
-            <%= f.label :description, :class => 'label' %>
-            <%= f.text_area :description, :class => 'input' %>
+            <%= f.label :description,'Description*', :class => 'label' %>
+            <%= f.text_area :description,  :required => true, :minlength => '5',
+               :maxlength => '150',:class => 'input' %>
          </p>
          <p class="control">
-            <%= f.label :category, :class => 'label' %>
-            <%= f.text_field :category, :class => 'input' %>
+            <%= f.label :category, 'Category*', :class => 'label' %>
+            <%= f.text_field :category, :required => true, :class => 'input' %>
          </p>
-        <p class="control">
+         <p class="control">
             <%= f.label :url, :class => 'label' %>
             <%= f.url_field :url, :class => 'input' %>
          </p>
          <p class="control">
-            <%= f.label :year, :class => 'label' %>
-            <%= f.number_field :year, :class => 'input' %>
+            <%= f.label :year, 'Year*'.html_safe, :class => 'label' %>
+            <%= f.number_field :year, :min => '1900', :max => '2100', :required => true, :class => 'input' %>
          </p>
          <p class="control">
             <%= f.submit 'Submit', :class => 'button is-primary' %>
@@ -52,24 +55,8 @@
          <% end %>
       </div>
    </div>
-   <% @language.frameworks.each do |framework| %>
-   <section class="hero hero-framework">
-      <div class="hero-body">
-         <div class="container">
-            <h1 class="title">
-               <%= framework.name %> <small style="color: gray;"> <%= framework.year %></small>
-            </h1>
-            <h2 class="subtitle">
-               <%= framework.category %>
-            </h2>
-            <p><%= framework.description %></p>
-         </div>
-      </div>
-   </section>
-   <% end %>
-   
 </div>
-<div class="modal">
+<div class="modal" id="modalLanguage">
    <div class="modal-background"></div>
    <div class="modal-content">
       <div class="box">
@@ -82,14 +69,28 @@
    <button class="modal-close cancel"></button>
 </div>
 <script>
-   var colors = ['is-primary', 'is-info', 'is-danger','is-warning', 'is-success', 'is-primary is-bold', 'is-success is-bold','is-warning is-bold','is-danger is-bold','is-primary is-bold','is-info is-bold' ];
-   var color = colors[Math.floor(Math.random()*colors.length)];
-   $('#language').addClass(color);
-      
-   $('#confirm').on('click', function(){
-      $('.modal').addClass('is-active'); 
-   });
-   $('.cancel').on('click', function(){
-      $('.modal').removeClass('is-active'); 
-   });
+$(function () {
+	$('html,body').animate({
+			scrollTop: $("#language").offset().top
+		},'fast');
+    $('#add').on('click', function(){
+        $('html,body').animate({
+			scrollTop: $('#addTitle').offset().top
+		},'fast');
+    });
+	var colors = ['is-primary', 'is-info', 'is-danger', 'is-warning', 'is-success', 'is-primary is-bold', 'is-success is-bold', 'is-warning is-bold', 'is-danger is-bold', 'is-primary is-bold', 'is-info is-bold'];
+	var color = colors[Math.floor(Math.random() * colors.length)];
+	$('#language').addClass(color);
+
+	$('#confirmFramework').on('click', function () {
+		$('#modalFramework').addClass('is-active');
+	});
+	$('.cancel').on('click', function () {
+		$('.modal').removeClass('is-active');
+	});
+	$('#confirm').on('click', function () {
+		$('#modalLanguage').addClass('is-active');
+	});
+});
+     
 </script>

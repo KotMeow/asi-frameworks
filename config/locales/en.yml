@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        framework:
+          attributes:
+            year:
+              inclusion: "should be between 1900-2100"

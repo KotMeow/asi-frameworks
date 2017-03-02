@@ -24,10 +24,16 @@
      border: solid 4px $primary;
  }
  
- .fa-times-circle {
+ .fa-times-circle, .fa-plus {
      cursor: pointer;
  }
  
  .hero-framework {
-     border-bottom: solid 4px $info;
+     margin-top: 40px;
+     padding: 20px;
+     border-left: solid 4px $info;
+ }
+ 
+ a.removeFramework {
+     color: $danger;
  }
