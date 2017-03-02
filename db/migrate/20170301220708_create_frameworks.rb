@@ -3,8 +3,8 @@ class CreateFrameworks < ActiveRecord::Migration[5.0]
     create_table :frameworks do |t|
       t.string :name
       t.text :description
-      t.string :kind
       t.integer :year
+      t.string :category
       t.references :language, foreign_key: true
 
       t.timestamps
