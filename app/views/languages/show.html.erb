@@ -6,9 +6,11 @@
          <h2 class="subtitle is-1">
             <%= @language.description %>
          </h2>
+         <% if logged_in? %>
          <i class="fa fa-plus" id="add"></i>
          <a href="<%= edit_language_path(@language) %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
          <i class="fa fa-times-circle" id="confirm"></i>
+         <% end %>
          <br>
       </div>
    </div>
@@ -26,9 +28,11 @@
             </h2>
             <p><%= framework.description %></p>
             <br>
+             <% if logged_in? %>
              <%= link_to '<i class="fa fa-cog"></i>'.html_safe, edit_language_framework_path(framework.language, framework) %>
               <%= link_to '<i class="fa fa-times-circle"></i>'.html_safe, [framework.language, framework],
                method: :delete, :class => 'removeFramework'%>
+               <% end %>
          </div>
       </div>
    </section>
