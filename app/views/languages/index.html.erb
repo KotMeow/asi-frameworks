@@ -4,109 +4,42 @@
 </div>
 
 
-<% @languages.each_with_index do |langauage,index| %>
+<% @languages.each_with_index do |language,index| %>
  <div class="framework">
   <section class="hero hero-language" id="<%= index %>">
    <div class="hero-body">
       <div class="container">
          <h1 class="title is-2">
-           <%= langauage.name %> 
+           <%= language.name %> 
          </h1>
          <h2 class="subtitle is-4">
-           <%= langauage.description %>
+           <%= language.description %>
          </h2>
-         <a href="<%= language_path(langauage) %>"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+         <a href="<%= language_path(language) %>"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
       </div>
    </div>
 </section>
 <div class="container">
    <div class="columns is-multiline">
+     <% language.frameworks.each do |framework| %>
       <div class="column is-one-third">
-         <div class="card">
+         <div class="card" id="<%= index %>">
             <header class="card-header">
                <p class="card-header-title">
-                  Spring Framework 
+                  <%= framework.name %>
                </p>
             </header>
             <div class="card-content">
                <div class="content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                     consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                  <p><%= framework.description %>
                   </p>
-                  <p>Type: <strong>Back-end</strong></p>
-                  <p>Release year: <strong>2009</strong></p>
+                  <p>Type: <strong><%= framework.category %></strong></p>
+                  <p>Release year: <strong><%= framework.year %></strong></p>
                </div>
             </div>
-            <footer class="card-footer">
-
-            </footer>
          </div>
       </div>
-            <div class="column is-one-third">
-         <div class="card">
-            <header class="card-header">
-               <p class="card-header-title">
-                  Spring Framework 
-               </p>
-            </header>
-            <div class="card-content">
-               <div class="content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                     consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                  </p>
-                  <p>Type: <strong>Back-end</strong></p>
-                  <p>Release year: <strong>2009</strong></p>
-               </div>
-            </div>
-
-         </div>
-      </div>
-            <div class="column is-one-third">
-         <div class="card">
-            <header class="card-header">
-               <p class="card-header-title">
-                  Spring Framework 
-               </p>
-            </header>
-            <div class="card-content">
-               <div class="content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                     consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                  </p>
-                  <p>Type: <strong>Back-end</strong></p>
-                  <p>Release year: <strong>2009</strong></p>
-               </div>
-            </div>
-            <footer class="card-footer">
-               <a class="card-footer-item">Save</a>
-               <a class="card-footer-item">Edit</a>
-               <a class="card-footer-item">Delete</a>
-            </footer>
-         </div>
-      </div>
-            <div class="column is-one-third">
-         <div class="card">
-            <header class="card-header">
-               <p class="card-header-title">
-                  Spring Framework 
-               </p>
-            </header>
-            <div class="card-content">
-               <div class="content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                     consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                  </p>
-                  <p>Type: <strong>Back-end</strong></p>
-                  <p>Release year: <strong>2009</strong></p>
-               </div>
-            </div>
-            <footer class="card-footer">
-               <a class="card-footer-item">Save</a>
-               <a class="card-footer-item">Edit</a>
-               <a class="card-footer-item">Delete</a>
-            </footer>
-         </div>
-      </div>
+      <% end %>
    </div>
 </div>
 </div>

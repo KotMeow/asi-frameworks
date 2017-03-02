@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301224520) do
+ActiveRecord::Schema.define(version: 20170302013302) do
 
   create_table "frameworks", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170301224520) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "category"
+    t.string   "url"
     t.index ["language_id"], name: "index_frameworks_on_language_id"
   end
 

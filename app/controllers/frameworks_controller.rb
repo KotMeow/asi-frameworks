@@ -1,14 +1,14 @@
 class FrameworksController < ApplicationController
+    def new
+        @framework = Framework.new
+    end
     def create 
-#        @language = Language.find(params[:language_id])
-#        @framework = @language.frameworks.create(framework_params)
-#        redirect_to language_path(@language)
         @language = Language.find(params[:language_id])
         @framework = @language.frameworks.create(framework_params)
         if @framework.errors.any?
             render 'languages/show' 
         else
-            redirect_to @language
+            redirect_to language_path(@language)
     end
     end
     
