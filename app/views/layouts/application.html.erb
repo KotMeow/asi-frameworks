@@ -20,13 +20,15 @@
             <span class="nav-toggle">
             <span></span> <span></span> <span></span> </span>
             <div class="nav-right nav-menu">  
+              <%= link_to "Sign up now!", signup_path, class: "nav-item is-tab" %>
+
                <%= link_to 'New language', new_language_path,  :class=>"nav-item is-tab" %>
                <a class="nav-item is-tab">
                About
                </a>
-               <a class="nav-item is-tab">
+               <a class="nav-item is-tab" href="https://github.com/KotMeow">
                <span class="icon">
-               <i class="fa fa-github"></i>
+                    <i class="fa fa-github"></i>
                </span>
                </a>
             </div>

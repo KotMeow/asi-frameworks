@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/new'
+  get  '/signup',  to: 'users#new'
   resources :languages do
       resources :frameworks
   end
