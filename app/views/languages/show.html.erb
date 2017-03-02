@@ -13,43 +13,58 @@
    </div>
 </section>
 <div class="container">
-<% @language.frameworks.each do |framework| %>
-  <p>
-    <strong>name:</strong>
-    <%= framework.name %>
-  </p>
-
-<% end %>
-   <p class="title is-2">Add new framework!</p>
+  <p class="title is-2" style="margin-top: 50px;">Add new framework!</p>
    <div class="columns">
-       <div class="column is-4">
-<%= form_for([@language, @language.frameworks.build]) do |f| %>
-  <p class="control">
-    <%= f.label :name, :class => 'label' %>
-    <%= f.text_field :name, :class => 'input' %>
-  </p>
-  
-  <p class="control">
-    <%= f.label :description, :class => 'label' %>
-    <%= f.text_area :description, :class => 'input' %>
-  </p>
-  
-    <p class="control">
-    <%= f.label :category, :class => 'label' %>
-    <%= f.text_field :category, :class => 'input' %>
-  </p>
-      <p class="control">
-    <%= f.label :year, :class => 'label' %>
-    <%= f.number_field :year, :class => 'input' %>
-  </p>
-  <p class="control">
-    <%= f.submit 'Submit', :class => 'button is-primary' %>
-  </p>
-<% end %>
-       </div>
+      <div class="column is-4">
+         <%= form_for([@language, Framework.new]) do |f| %>
+         <% if @framework && @framework.errors.any? %>
+         <div class="notification is-danger" id="error_explanation">
+            <ul>
+               <% @framework.errors.full_messages.each do |msg| %>
+               <li><%= msg %></li>
+               <% end %>
+            </ul>
+         </div>
+         <% end %>
+         <p class="control">
+            <%= f.label :name, :class => 'label' %>
+            <%= f.text_field :name, :class => 'input' %>
+         </p>
+         <p class="control">
+            <%= f.label :description, :class => 'label' %>
+            <%= f.text_area :description, :class => 'input' %>
+         </p>
+         <p class="control">
+            <%= f.label :category, :class => 'label' %>
+            <%= f.text_field :category, :class => 'input' %>
+         </p>
+         <p class="control">
+            <%= f.label :year, :class => 'label' %>
+            <%= f.number_field :year, :class => 'input' %>
+         </p>
+         <p class="control">
+            <%= f.submit 'Submit', :class => 'button is-primary' %>
+         </p>
+         <% end %>
+      </div>
+   </div>
+   <% @language.frameworks.each do |framework| %>
+   <section class="hero hero-framework">
+      <div class="hero-body">
+         <div class="container">
+            <h1 class="title">
+               <%= framework.name %> <small style="color: gray;"> <%= framework.year %></small>
+            </h1>
+            <h2 class="subtitle">
+               <%= framework.category %>
+            </h2>
+            <p><%= framework.description %></p>
+         </div>
+      </div>
+   </section>
+   <% end %>
+   
 </div>
-</div>
-
 <div class="modal">
    <div class="modal-background"></div>
    <div class="modal-content">

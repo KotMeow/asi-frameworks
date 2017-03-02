@@ -6,7 +6,7 @@
      font-size: 1.4rem;
  }
  
- .hero {
+ .hero-language {
      margin-bottom: 50px;
      margin-top: 50px;
  }
@@ -21,9 +21,13 @@
  }
  
  .card {
-     border: solid 5px $primary;
+     border: solid 4px $primary;
  }
  
  .fa-times-circle {
      cursor: pointer;
+ }
+ 
+ .hero-framework {
+     border-bottom: solid 4px $info;
  }
