@@ -17,19 +17,20 @@ class UsersController < ApplicationController
     end
     
     def update
-        if @user == current_user
-            @user = User.find(params[:id])
+        @user = User.find(params[:id])
+        if User.find(session[:user_id]).id == @user.id
             if @user.update_attributes(user_params)
                 flash[:success] = "Profile updated"
                 redirect_to languages_path
             else
                 render 'edit'
             end
+        else
+            flash[:danger] = "Nice try. -.-"
+            redirect_to edit_user_path(@user)
         end
     end
-    def current_user
-        @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    end
+    
     private
 
     def user_params
