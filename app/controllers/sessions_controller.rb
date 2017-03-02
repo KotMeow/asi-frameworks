@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
   
   def create
-    user = User.find_by(email: params[:session][:email].downcase, password: params[:session][:password])
+    user = User.find_by(name: params[:session][:name].downcase, password: params[:session][:password])
     if user
       log_in user
       redirect_to languages_path

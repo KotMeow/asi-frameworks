@@ -30,6 +30,13 @@
                <p class="card-header-title">
                   <%= framework.name %>
                </p>
+               <% if not framework.url.nil?%>
+               <a class="card-header-icon" href="<%= framework.url%>">
+                  <span class="icon">
+                    <i class="fa fa-angle-right"></i>
+                  </span>
+                </a>
+                 <% end %>
             </header>
             <div class="card-content">
                <div class="content">

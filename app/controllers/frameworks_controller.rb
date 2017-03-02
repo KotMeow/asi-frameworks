@@ -1,6 +1,7 @@
 class FrameworksController < ApplicationController
+    before_action :logged_in_user, only: [:create]
+    before_filter :authorize_admin, only: [:destroy, :edit, :update]
     
-    before_action :logged_in_user, only: [:edit, :update, :destroy, :create]
     
     def new
         @framework = Framework.new
@@ -33,9 +34,18 @@ class FrameworksController < ApplicationController
         @framework.destroy
         redirect_to language_path(@language)
     end
-    
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
+    end
+    def authorize_admin
+        redirect_to root_url, status: 401 unless current_user.admin
+    #redirects to previous page
+    end
     private
         def framework_params
-            params.require(:framework).permit(:name,:description,:category,:year)
+            params.require(:framework).permit(:name,:description,:category,:year, :url)
         end
 end
