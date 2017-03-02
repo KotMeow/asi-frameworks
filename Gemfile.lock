@@ -147,6 +147,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt
   bulma-rails (~> 0.3.1)
   byebug
   coffee-rails (~> 4.2)

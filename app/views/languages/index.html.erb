@@ -1,9 +1,11 @@
 <div class="container">
    <p class="title is-1" id="test">Hello in Frameworks!</p>
    <p class="subtitle is-3">Place to share informations about frameworks.</p>
+
+<% flash.each do |message_type, message| %>
+  <div class="notification is-success" style="margin-bottom: 50px;"><%= message %></div>
+<% end %>
 </div>
-
-
 <% @languages.each_with_index do |language,index| %>
  <div class="framework">
   <section class="hero hero-language" id="<%= index %>">
