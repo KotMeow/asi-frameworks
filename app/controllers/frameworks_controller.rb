@@ -11,6 +11,19 @@ class FrameworksController < ApplicationController
             redirect_to language_path(@language)
         end
     end
+    def edit
+        @language = Language.find(params[:language_id])
+        @framework = @language.frameworks.find(params[:id])
+    end
+    def update
+        @language = Language.find(params[:language_id])
+        @framework = @language.frameworks.find(params[:id])
+        if @framework.update(framework_params)
+            redirect_to language_path(@language)
+        else
+            render 'edit'
+        end
+    end
     def destroy
         @language = Language.find(params[:language_id])
         @framework = @language.frameworks.find(params[:id])

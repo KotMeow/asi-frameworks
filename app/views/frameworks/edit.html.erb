@@ -1,0 +1,46 @@
+<div class="container">
+  <p class="title is-2">Edit  <%= @framework.name %></p>
+   <div class="columns">
+       <div class="column is-4">
+                <%= form_for :framework, url: language_framework_path(@framework.language, @framework), method: :patch do |f| %>
+         <% if @framework && @framework.errors.any? %>
+         <div class="notification is-danger" id="error_explanation">
+            <ul>
+               <% @framework.errors.full_messages.each do |msg| %>
+               <li><%= msg %></li>
+               <% end %>
+            </ul>
+         </div>
+         <% end %>
+         <p class="control">
+            <%= f.label :name, 'Name*', :class => 'label' %>
+            <%= f.text_field :name, :required => true,  :class => 'input' %>
+         </p>
+         <p class="control">
+            <%= f.label :description,'Description*', :class => 'label' %>
+            <%= f.text_area :description,  :required => true, :minlength => '5',
+               :maxlength => '150',:class => 'input' %>
+         </p>
+         <p class="control">
+            <%= f.label :category, 'Category*', :class => 'label' %>
+            <%= f.text_field :category, :required => true, :class => 'input' %>
+         </p>
+         <p class="control">
+            <%= f.label :url, :class => 'label' %>
+            <%= f.url_field :url, :class => 'input' %>
+         </p>
+         <p class="control">
+            <%= f.label :year, 'Year*'.html_safe, :class => 'label' %>
+            <%= f.number_field :year, :min => '1900', :max => '2100', :required => true, :class => 'input' %>
+         </p>
+         <p class="control">
+            <%= f.submit 'Submit', :class => 'button is-primary' %>
+         </p>
+         <% end %>
+
+      
+       <br>
+       <%= link_to 'Back', language_path(@language),  :class=>"button" %>
+       </div>
+    </div>
+</div>
