@@ -1,71 +1,68 @@
 <div class="container">
-   <p class="title is-1" id="test">Hello in Frameworks<% if logged_in? %> <%= current_user.name %><%end%>!</p>
-   <p class="subtitle is-3">Place to share informations about frameworks.</p>
-
-<% flash.each do |message_type, message| %>
-  <div class="notification is-success" style="margin-bottom: 50px;"><%= message %></div>
-<% end %>
-</div>
-<% @languages.each_with_index do |language,index| %>
- <div class="framework">
+  <p class="title is-1" id="test">Hello in Frameworks<% if logged_in? %><%= current_user.name %><%end%>!
+  </p>
+  <p class="subtitle is-3">Place to share informations about frameworks.</p><% flash.each do |message_type, message| %>
+  <div class="notification is-success" style="margin-bottom: 50px;"><%= message %>
+  </div><% end %>
+</div><% @languages.each_with_index do |language,index| %>
+<div class="framework">
   <section class="hero hero-language" id="<%= index %>">
-   <div class="hero-body">
+    <div class="hero-body">
       <div class="container">
-         <h1 class="title is-2">
-           <%= language.name %> 
-         </h1>
-         <h2 class="subtitle is-4">
-           <%= language.description %>
-         </h2>
-         <a href="<%= language_path(language) %>"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+        <h1 class="title is-2"><%= language.name %>
+        </h1>
+        <h2 class="subtitle is-4"><%= language.description %>
+        </h2>
+        <a href="<%= language_path(language) %>">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
       </div>
-   </div>
-</section>
-<div class="container">
-   <div class="columns is-multiline">
-     <% language.frameworks.each do |framework| %>
+    </div>
+  </section>
+  <div class="container">
+    <div class="columns is-multiline"><% language.frameworks.each do |framework| %>
       <div class="column is-one-third">
-         <div class="card group<%= index %>">
-            <header class="card-header">
-               <p class="card-header-title">
-                  <%= framework.name %>
-               </p>
-               <% if not framework.url.nil?%>
-               <a class="card-header-icon" href="<%= framework.url%>">
-                  <span class="icon">
-                    <i class="fa fa-angle-right"></i>
-                  </span>
-                </a>
-                 <% end %>
-            </header>
-            <div class="card-content">
-               <div class="content">
-                  <p><%= framework.description %>
-                  </p>
-                  <p>Type: <strong><%= framework.category %></strong></p>
-                  <p>Release year: <strong><%= framework.year %></strong></p>
-               </div>
+        <div class="card group<%= index %>">
+          <header class="card-header">
+            <p class="card-header-title"><%= framework.name %>
+            </p><% if not framework.url.nil?%>
+            <a class="card-header-icon" href="<%= framework.url%>">
+              <span class="icon">
+                <i class="fa fa-angle-right"></i>
+              </span>
+            </a><% end %>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p><%= framework.description %>
+              </p>
+              <p>Type: 
+                <strong><%= framework.category %>
+                </strong>
+              </p>
+              <p>Release year: 
+                <strong><%= framework.year %>
+                </strong>
+              </p>
             </div>
-         </div>
-      </div>
-      <% end %>
-   </div>
-</div>
-</div>
-  <% end %>
+          </div>
+        </div>
+      </div><% end %>
+    </div>
+  </div>
+</div><% end %>
 <script>
-$(function(){
-var elements = $('.framework').length;
-   for (var i = 0; i< elements; i++ ) {
-       var index = Math.floor(Math.random()*colors.length);
+$(function() {
+    var elements = $('.framework').length;
+    for (var i = 0; i < elements; i++) {
+        var index = Math.floor(Math.random() * colors.length);
         var color = colors[index];
-       $('#' + i).addClass(color);
-       var hero = $('.group' + i);
-        for (var j=0;j<hero.length;j+=1){
+        $('#' + i).addClass(color);
+        var hero = $('.group' + i);
+        for (var j = 0; j <
+            hero.length; j += 1) {
             hero[j].style.borderColor = borderColors[index];
+        };
     };
-   };  
 });
-
-
-</script>
+  </script>

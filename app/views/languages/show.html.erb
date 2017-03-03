@@ -1,128 +1,103 @@
 <section class="hero" id="language">
-   <div class="hero-body">
-      <div class="container">
-         <h1 class="title language-name"><%= @language.name %>
-         </h1>
-         <h2 class="subtitle is-1">
-            <%= @language.description %>
-         </h2>
-         <% if logged_in? %>
-         <i class="fa fa-plus" id="add"></i>
-         <% end %>
-         <% if current_user and current_user.admin %>
-         <a href="<%= edit_language_path(@language) %>"><i class="fa fa-cog" aria-hidden="true"></i></a>
-         <i class="fa fa-times-circle" id="confirm"></i>
-         <%end%>
-         
-         <br>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title language-name"><%= @language.name %>
+      </h1>
+      <h2 class="subtitle is-1"><%= @language.description %>
+      </h2><% if logged_in? %>
+      <i class="fa fa-plus" id="add"></i><% end %><% if current_user and current_user.admin %>
+      <a href="<%= edit_language_path(@language) %>">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+      </a>
+      <i class="fa fa-times-circle" id="confirm"></i><%end%>
+      <br>
       </div>
-   </div>
-</section>
-<div class="container">
-  <% @language.frameworks.each do |framework| %>
-   <section class="hero hero-framework">
+    </div>
+  </section>
+  <div class="container"><% @language.frameworks.each do |framework| %>
+    <section class="hero hero-framework">
       <div class="hero-body">
-         <div class="container">
-            <h1 class="title">
-               <%= framework.name %> <small style="color: gray;"> <%= framework.year %></small>
-            </h1>
-            <h2 class="subtitle">
-               <%= framework.category %>
-            </h2>
-            <p><%= framework.description %></p>
-            <br>
-              <% if current_user and current_user.admin %>
-             <%= link_to '<i class="fa fa-cog"></i>'.html_safe, edit_language_framework_path(framework.language, framework) %>
-              <%= link_to '<i class="fa fa-times-circle"></i>'.html_safe, [framework.language, framework],
-               method: :delete, :class => 'removeFramework'%>
-               <% end %>
-         </div>
-      </div>
-   </section>
-   <% end %>
-   <% if logged_in? %>
-   <p class="title is-2" style="margin-top: 50px;" id="addTitle">Add new framework!</p>
-   <div class="columns">
-      <div class="column is-4">
-         <%= form_for([@language, Framework.new]) do |f| %>
-         <% if @framework && @framework.errors.any? %>
-         <div class="notification is-danger" id="error_explanation">
-            <ul>
-               <% @framework.errors.full_messages.each do |msg| %>
-               <li><%= msg %></li>
-               <% end %>
+        <div class="container">
+          <h1 class="title"><%= framework.name %>
+            <small style="color: gray;"><%= framework.year %>
+            </small>
+          </h1>
+          <h2 class="subtitle"><%= framework.category %>
+          </h2>
+          <p><%= framework.description %>
+          </p>
+          <br><% if current_user and current_user.admin %><%= link_to '
+            <i class="fa fa-cog"></i>'.html_safe, edit_language_framework_path(framework.language, framework) %><%= link_to '
+            <i class="fa fa-times-circle"></i>'.html_safe, [framework.language, framework],
+               method: :delete, :class => 'removeFramework'%><% end %>
+          </div>
+        </div>
+      </section><% end %><% if logged_in? %>
+      <p class="title is-2" style="margin-top: 50px;" id="addTitle">Add new framework!</p>
+      <div class="columns">
+        <div class="column is-4" style="margin-bottom:50px;"><%= form_for([@language, Framework.new]) do |f| %><% if @framework && @framework.errors.any? %>
+          <div class="notification is-danger" id="error_explanation">
+            <ul><% @framework.errors.full_messages.each do |msg| %>
+              <li><%= msg %>
+              </li><% end %>
             </ul>
-         </div>
-         <% end %>
-         <p class="control">
-            <%= f.label :name, 'Name*', :class => 'label' %>
-            <%= f.text_field :name, :required => true,  :class => 'input' %>
-         </p>
-         <p class="control">
-            <%= f.label :description,'Description*', :class => 'label' %>
-            <%= f.text_area :description,  :required => true, :minlength => '5',
+          </div><% end %>
+          <p class="control"><%= f.label :name, 'Name*', :class => 'label' %><%= f.text_field :name, :required => true,  :class => 'input' %>
+          </p>
+          <p class="control"><%= f.label :description,'Description*', :class => 'label' %><%= f.text_area :description,  :required => true, :minlength => '5',
                :maxlength => '150',:class => 'input' %>
-         </p>
-         <p class="control">
-            <%= f.label :category, 'Category*', :class => 'label' %>
-            <%= f.text_field :category, :required => true, :class => 'input' %>
-         </p>
-         <p class="control">
-            <%= f.label :url, :class => 'label' %>
-            <%= f.url_field :url, :class => 'input' %>
-         </p>
-         <p class="control">
-            <%= f.label :year, 'Year*'.html_safe, :class => 'label' %>
-            <%= f.number_field :year, :min => '1900', :max => '2100', :required => true, :class => 'input' %>
-         </p>
-         <p class="control">
-            <%= f.submit 'Submit', :class => 'button is-primary' %>
-         </p>
-         <% end %>
-      </div>
-   </div>
-     <% end %>
-</div>
-<div class="modal" id="modalLanguage">
-   <div class="modal-background"></div>
-   <div class="modal-content">
-      <div class="box">
-         <h1 class="title">Are you sure you want to delete "<%= @language.name %>"?</h1>
-         <%= link_to 'Destroy', language_path(@language),
+          </p>
+          <p class="control"><%= f.label :category, 'Category*', :class => 'label' %><%= f.text_field :category, :required => true, :class => 'input' %>
+          </p>
+          <p class="control"><%= f.label :url, :class => 'label' %><%= f.url_field :url, :class => 'input' %>
+          </p>
+          <p class="control"><%= f.label :year, 'Year*'.html_safe, :class => 'label' %><%= f.number_field :year, :min => '1900', :max => '2100', :required => true, :class => 'input' %>
+          </p>
+          <p class="control"><%= f.submit 'Submit', :class => 'button is-primary is-pulled-right' %>
+          </p><% end %>
+        </div>
+      </div><% end %>
+    </div>
+    <div class="modal" id="modalLanguage">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="box">
+          <h1 class="title">Are you sure you want to delete "<%= @language.name %>"?
+          </h1><%= link_to 'Destroy', language_path(@language),
             method: :delete, :class => 'button is-danger' %>
-         <button class="button cancel ">Cancel</button>
+          <button class="button cancel ">Cancel</button>
+        </div>
       </div>
-   </div>
-   <button class="modal-close cancel"></button>
-</div>
+      <button class="modal-close cancel"></button>
+    </div>
 <script>
-$(function () {
-	$('html,body').animate({
-			scrollTop: $("#language").offset().top
-		},'fast');
-    $('#add').on('click', function(){
+$(function() {
+    $('html,body').animate({
+        scrollTop: $("#language").offset().top
+    }, 'fast');
+    $('#add').on('click', function() {
         $('html,body').animate({
-			scrollTop: $('#addTitle').offset().top
-		},'fast');
+            scrollTop: $('#addTitle').offset().top
+        }, 'fast');
     });
 
     var index = Math.floor(Math.random() * colors.length);
-	var color = colors[index];
-	$('#language').addClass(color);
-   var hero = $('.hero-framework');
-    for (var i=0;i<hero.length;i+=1){
+    var color = colors[index];
+    $('#language').addClass(color);
+    var hero = $('.hero-framework');
+    for (var i = 0; i <
+        hero.length; i += 1) {
         hero[i].style.borderColor = borderColors[index];
     }
 
-	$('#confirmFramework').on('click', function () {
-		$('#modalFramework').addClass('is-active');
-	});
-	$('.cancel').on('click', function () {
-		$('.modal').removeClass('is-active');
-	});
-	$('#confirm').on('click', function () {
-		$('#modalLanguage').addClass('is-active');
-	});
+    $('#confirmFramework').on('click', function() {
+        $('#modalFramework').addClass('is-active');
+    });
+    $('.cancel').on('click', function() {
+        $('.modal').removeClass('is-active');
+    });
+    $('#confirm').on('click', function() {
+        $('#modalLanguage').addClass('is-active');
+    });
 });
-     
 </script>

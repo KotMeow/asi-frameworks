@@ -1,52 +1,42 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>Frameworks</title>
-      <%= csrf_meta_tags %>
-      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-   </head>
-   <body>
-     <style>
-
-       </style>
-      <div class="container">
-         <nav class="nav" style="margin-bottom:50px;">
-            <div class="nav-left">
-            <a class="nav-item nav-brand" href="/">Frameworks</a>
-            </div>
-            <div class="nav-center">
-            
-               <a class="nav-item is-tab" href="https://github.com/KotMeow">
-               <span class="icon">
-                    <i class="fa fa-github"></i>
-               </span>
-               </a>
-            </div>
-            <span class="nav-toggle">
-            <span></span> <span></span> <span></span> </span>
-            <div class="nav-right nav-menu">  
-
-                <% if logged_in? %>
-               <%= link_to 'New language', new_language_path,  :class=>"nav-item is-tab" %>
-               <%= link_to "Edit Account", edit_user_path(current_user), class: "nav-item is-tab" %>
-               <%= link_to "Log out", logout_path, method: "delete", class: "nav-item is-tab" %>
-               <% else %>
-               <%= link_to "Sign up now!", signup_path, class: "nav-item is-tab" %>
-               <%= link_to "Log in", login_path, class: "nav-item is-tab" %>
-               <% end %>
-
-            </div>
-         </nav>
-               </div>
-         <%= yield %>
-      <span class='Top'><i class='fa fa-angle-up fa-2x'></i></span>
-      <script>
-       $(".Top").click(function () {
-    $("html,body").stop().animate({
-        scrollTop: 0
+  <head>
+    <title>Frameworks</title><%= csrf_meta_tags %><%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %><%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <style></style>
+    <div class="container">
+      <nav class="nav" style="margin-bottom:50px;">
+        <div class="nav-left">
+          <a class="nav-item nav-brand" href="/">Frameworks</a>
+        </div>
+        <div class="nav-center">
+          <a class="nav-item is-tab" href="https://github.com/KotMeow">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+        </div>
+        <span class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <div class="nav-right nav-menu"><% if logged_in? %><%= link_to 'New language', new_language_path,  :class=>"nav-item is-tab" %><%= link_to "Edit Account", edit_user_path(current_user), class: "nav-item is-tab" %><%= link_to "Log out", logout_path, method: "delete", class: "nav-item is-tab" %><% else %><%= link_to "Sign up now!", signup_path, class: "nav-item is-tab" %><%= link_to "Log in", login_path, class: "nav-item is-tab" %><% end %>
+        </div>
+      </nav>
+    </div><%= yield %>
+    <span class='Top'>
+      <i class='fa fa-angle-up fa-2x'></i>
+    </span>
+<script>
+$(function() {
+    $(".Top").click(function() {
+        $("html,body").stop().animate({
+            scrollTop: 0
+        });
     });
 });
-       </script>
-   </body>
+</script>
+  </body>
 </html>
