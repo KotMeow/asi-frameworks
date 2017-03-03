@@ -1,0 +1,13 @@
+before_install:
+  - gem install bundler
+  - rvm install ruby-2.3.3
+  - rvm --default use 2.3.3
+deploy:
+  language: ruby
+  rvm: 2.3.3p222
+  provider: heroku
+  api_key:
+    secure: oggp8785QoV82QnpiVFzC3NCunACny2xZJh/hW658bA26ssB9qqvre3lceREVN7POiHv9v+s4DVWGIaytTrTl7WOcmlrh2JsPDPXUoAQ4Wmyx3tHf6Ni7lNfaNqB7dMLrgLk0zzVPJVDwBbZhDleR/wtrQlTdXu0QBe952WA+X9F5f7hWa+6nwoP9mMK4pwwH0oJWkNJru8VgC41MY3UMEFLSoDvOPDrFy/oYyHQUO2JA6QvUyGQ14D2P1xUpLnGIuPedrucFrupBq1EoJRUu1pXdYP2gQU1fm5nDRNU3VjM29FZWN7Bbbnj6HS9ncRfnDOnXC+yG4NQDhmSsLt3S+V7XxpZ/wEs6YZNmGtXvw3HTkx0iNbqn7PNNrX8UoMvdk8gh0rXDFj2DzLBLMWedhDxISkC02hERJtdOGwjub8e0ea/Gg0TC2oMU6URNfSTzPhL+gMLXZ8BuMD+jrtKlHYE92TZjgCYlWC4IDe8pH6Rsm0o0uK+GZXeE/T9TR1ElJn7D1gPjeLEQD1X4cT4uzUykkoogJV3onaMFubmpngfbcAph4d6j0+LQyfw2hdeAnIpDvu0FR1Yjw7lss+P/uJqbsXJNZbESFLKXwQCbLhUMRwlVUVW5ejQHWnQ7gzxVXwCgmip+pqRXsicZSUVCwUzusyxDd1ARj8iGSyUnZY=
+  app: asi-frameworks
+  on:
+    repo: KotMeow/asi-frameworks
