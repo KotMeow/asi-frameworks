@@ -6,4 +6,4 @@ application up and running.
 
 | Wersja Ruby | Rails | Baza danych | Dodatkowe gemy|
 | :-------------: |:-------------:| :--------:|:-----:|
-| 2.3.3 | 5.0.1 | SQLite3/PostgeSQL | bulma-rails, 'font-awesome-rails'|
+| 2.4.0 | 5.0.2 | SQLite3/PostgeSQL | bulma-rails, 'font-awesome-rails'|
