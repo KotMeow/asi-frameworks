@@ -14,8 +14,18 @@
       </div>
     </div>
   </section>
-  <div class="container"><% @language.frameworks.each do |framework| %>
-    <section class="hero hero-framework">
+  <div class="container">
+    <form action="javascript:search();" style="margin-top: 50px;">
+      <label for="searchText" class="label">Search for Framework</label>
+<input id="searchText" list="suggestions" class="input search" autocomplete="off">
+<datalist id="suggestions">
+   <% @language.frameworks.each do |framework| %>
+    <option value="<%= framework.name %>">
+    <% end %>
+</datalist>
+</form>
+   <% @language.frameworks.each do |framework| %>
+    <section class="hero hero-framework <%= framework.name.downcase %>">
       <div class="hero-body">
         <div class="container">
           <h1 class="title"><%= framework.name %>
@@ -72,6 +82,17 @@
       <button class="modal-close cancel"></button>
     </div>
 <script>
+  function search(form) {
+    var text = $('#searchText').val().toLowerCase();
+    var element =  $("." + text);
+      if (element.length != 0) {
+              $('html,body').animate({
+        scrollTop: element.offset().top},
+        'slow');
+      }
+
+    };
+    
 $(function() {
     $('html,body').animate({
         scrollTop: $("#language").offset().top
