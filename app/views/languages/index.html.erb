@@ -1,11 +1,22 @@
 <div class="container">
-  <p class="title is-1" id="test">Hello in Frameworks<% if logged_in? %><%= current_user.name %><%end%>!
+  <p class="title is-1" id="test">Hello in Frameworks <% if logged_in? %><strong><%= current_user.name.capitalize %><%end%></strong>!
   </p>
   <p class="subtitle is-3">Place to share informations about frameworks.</p><% flash.each do |message_type, message| %>
   <div class="notification is-success" style="margin-bottom: 50px;"><%= message %>
   </div><% end %>
-</div><% @languages.each_with_index do |language,index| %>
-<div class="framework">
+  <label for="searchText" class="label">Search for Language</label>
+  <form action="javascript:search();">
+<input id="searchText" list="suggestions" class="input search" autocomplete="off">
+<datalist id="suggestions">
+   <% @languages.each do |language| %>
+    <option value="<%= language.name %>">
+    <% end %>
+</datalist>
+</form>
+</div>
+
+<% @languages.each_with_index do |language,index| %>
+<div class="framework <%= language.name.downcase %>">
   <section class="hero hero-language" id="<%= index %>">
     <div class="hero-body">
       <div class="container">
@@ -14,7 +25,7 @@
         <h2 class="subtitle is-4"><%= language.description %>
         </h2>
         <a href="<%= language_path(language) %>">
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
+          <i class="fa fa-info-circle" aria-hidden="true"></i> Details
         </a>
       </div>
     </div>
@@ -25,7 +36,7 @@
         <div class="card group<%= index %>">
           <header class="card-header">
             <p class="card-header-title"><%= framework.name %>
-            </p><% if not framework.url.nil?%>
+            </p><% if  !framework.url.empty?%>
             <a class="card-header-icon" href="<%= framework.url%>">
               <span class="icon">
                 <i class="fa fa-angle-right"></i>
@@ -52,6 +63,17 @@
   </div>
 </div><% end %>
 <script>
+  function search(form) {
+    var text = $('#searchText').val().toLowerCase();
+    var element =  $("." + text);
+      if (element.length != 0) {
+              $('html,body').animate({
+        scrollTop: element.offset().top},
+        'slow');
+      }
+
+    };
+    
 $(function() {
     var elements = $('.framework').length;
     for (var i = 0; i < elements; i++) {

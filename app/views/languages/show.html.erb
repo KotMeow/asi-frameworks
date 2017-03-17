@@ -47,7 +47,8 @@
           <p class="control"><%= f.label :description,'Description*', :class => 'label' %><%= f.text_area :description,  :required => true, :minlength => '5',
                :maxlength => '150',:class => 'input' %>
           </p>
-          <p class="control"><%= f.label :category, 'Category*', :class => 'label' %><%= f.text_field :category, :required => true, :class => 'input' %>
+          <p class="control"><%= f.label :category, 'Category*', :class => 'label' %>
+          <%= f.select(:category, [['Web Framework','Web'], ['Object-Relational Mapping', 'ORM'], ['Application Framework', 'App'], ['CSS Framework', 'CSS']], {}, { :class => 'input' }) %>
           </p>
           <p class="control"><%= f.label :url, :class => 'label' %><%= f.url_field :url, :class => 'input' %>
           </p>
