@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+languages = Language.create([{ name: 'Python', description: ' Opis bardzo dlugi' }, 
+                             { name: 'Ruby', description: ' Opis bardzo dlugi'},
+                             { name: 'Java', description: ' Opis bardzo dlugi' },
+                             { name: 'C#', description: ' Opis bardzo dlugi' }])
