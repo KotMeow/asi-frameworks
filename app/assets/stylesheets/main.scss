@@ -132,3 +132,9 @@ a.nav-item, a.nav-item i {
          font-size: 2rem !important;
      }
 }
+
+i.fa-github {
+     @include tablet {
+         display: none;
+     }
+}
