@@ -1,7 +1,7 @@
 <div class="container">
   <p class="title is-2">Edit  <%= @framework.name %></p>
-   <div class="columns">
-       <div class="column is-4">
+   <div class="columns is-mobile">
+       <div class="column is-4-desktop is-6-mobile">
                 <%= form_for :framework, url: language_framework_path(@framework.language, @framework), method: :patch do |f| %>
          <% if @framework && @framework.errors.any? %>
          <div class="notification is-danger" id="error_explanation">

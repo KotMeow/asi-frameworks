@@ -5,12 +5,14 @@
       </h1>
       <h2 class="subtitle is-1"><%= @language.description %>
       </h2><% if logged_in? %>
+      <div class="icons">
       <i class="fa fa-plus" id="add"></i><% end %><% if current_user and current_user.admin %>
       <a href="<%= edit_language_path(@language) %>">
         <i class="fa fa-cog" aria-hidden="true"></i>
       </a>
-      <i class="fa fa-times-circle" id="confirm"></i><%end%>
-      <br>
+      <i class="fa fa-times-circle" id="confirm"></i>
+      </div>
+      <%end%>
       </div>
     </div>
   </section>
@@ -34,7 +36,7 @@
           </h1>
           <h2 class="subtitle"><%= framework.category %>
           </h2>
-          <p><%= framework.description %>
+          <p class="framework-description"><%= framework.description %>
           </p>
           <br><% if current_user and current_user.admin %><%= link_to '
             <i class="fa fa-cog"></i>'.html_safe, edit_language_framework_path(framework.language, framework) %><%= link_to '
@@ -44,8 +46,8 @@
         </div>
       </section><% end %><% if logged_in? %>
       <p class="title is-2" style="margin-top: 50px;" id="addTitle">Add new framework!</p>
-      <div class="columns">
-        <div class="column is-4" style="margin-bottom:50px;"><%= form_for([@language, Framework.new]) do |f| %><% if @framework && @framework.errors.any? %>
+      <div class="columns is-mobile">
+        <div class="column is-4-desktop is-6-mobile" style="margin-bottom:50px;"><%= form_for([@language, Framework.new]) do |f| %><% if @framework && @framework.errors.any? %>
           <div class="notification is-danger" id="error_explanation">
             <ul><% @framework.errors.full_messages.each do |msg| %>
               <li><%= msg %>

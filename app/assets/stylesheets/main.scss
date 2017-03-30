@@ -1,6 +1,20 @@
  @import "font-awesome";
  @import "bulma";
  @import url('https://fonts.googleapis.com/css?family=Roboto:300');
+ $tablet-width: 768px;
+ $desktop-width: 1024px;
+ @mixin tablet {
+     @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+         @content;
+     }
+ }
+ 
+ @mixin desktop {
+     @media (min-width: #{$desktop-width}) {
+         @content;
+     }
+ }
+ 
  a.nav-brand {
      font-family: 'Roboto', sans-serif;
      font-size: 1.4rem;
@@ -18,8 +32,39 @@
  
  h1.language-name {
      font-size: 15rem;
+     @include tablet {
+         font-size: 20rem;
+     }
  }
  
+ h1,
+ h2 {
+     @include tablet {
+         font-size: 8rem !important;
+     }
+ }
+ 
+ p.card-header-title {
+     @include tablet {
+         font-size: 5rem !important;
+     }
+ }
+ 
+ i.fa-info-circle {
+     @include tablet {
+         font-size: 3rem !important;
+     }
+}
+i.fa-angle-right {
+      @include tablet {
+         font-size: 4rem !important;
+     }
+}
+.icons i { 
+     @include tablet {
+         font-size: 3rem !important;
+     }
+}
  .card {
      border: solid 4px $primary;
  }
@@ -51,6 +96,39 @@
          font-size: 3rem;
      }
  }
+ 
+ body {
+     font-size: 1rem;
+     @include tablet {
+         font-size: 2.2rem;
+     }
+ }
+.framework-description {
+     @include tablet {
+         font-size: 4rem !important;
+     }
+}
 
-.search {
+.button { 
+     @include tablet {
+         font-size: 2rem !important;
+     }
+}
+p.title {
+    @include tablet {
+         font-size: 5rem !important;
+     }
+}
+
+input {
+    @include tablet {
+         font-size: 3rem !important;
+     }
+}
+
+
+a.nav-item, a.nav-item i {
+     @include tablet {
+         font-size: 2rem !important;
+     }
 }

@@ -1,7 +1,7 @@
 <div class="container">
   <p class="title is-2">Edit!</p>
-  <div class="columns">
-    <div class="column is-4"><% flash.each do |message_type, message| %>
+  <div class="columns is-mobile">
+    <div class="column is-4-desktop is-6-mobile"><% flash.each do |message_type, message| %>
       <div class="notification is-danger"><%= message %>
       </div><% end %><%= form_for(@user) do |f| %><%= render 'shared/error_messages' %>
       <p class="control"><%= f.label :name, :class => 'label' %><%= f.text_field :name, :class => 'input' %>
