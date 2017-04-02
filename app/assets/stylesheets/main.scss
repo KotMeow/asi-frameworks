@@ -37,16 +37,21 @@
      }
  }
  
- h1,
- h2 {
+ h1 {
      @include tablet {
          font-size: 8rem !important;
      }
  }
  
+ h2 {
+     @include tablet {
+         font-size: 6rem !important;
+     }
+ }
+ 
  p.card-header-title {
      @include tablet {
-         font-size: 5rem !important;
+         font-size: 4rem !important;
      }
  }
  
@@ -54,17 +59,30 @@
      @include tablet {
          font-size: 3rem !important;
      }
-}
-i.fa-angle-right {
-      @include tablet {
+ }
+ 
+ i.fa-angle-right {
+     @include tablet {
          font-size: 4rem !important;
      }
-}
-.icons i { 
+ }
+i.fa-cog  {
      @include tablet {
          font-size: 3rem !important;
      }
-}
+ }
+
+i.fa-times-circle, i.fa-angle-up  {
+     @include tablet {
+         font-size: 3rem !important;
+     }
+ }
+ .icons i {
+     @include tablet {
+         font-size: 3rem !important;
+     }
+ }
+ 
  .card {
      border: solid 4px $primary;
  }
@@ -100,41 +118,66 @@ i.fa-angle-right {
  body {
      font-size: 1rem;
      @include tablet {
-         font-size: 2.2rem;
+         font-size: 2rem;
      }
  }
-.framework-description {
+ 
+ .framework-description {
      @include tablet {
          font-size: 4rem !important;
      }
-}
-
-.button { 
+ }
+ 
+ .button {
      @include tablet {
          font-size: 2rem !important;
      }
-}
-p.title {
-    @include tablet {
+ }
+ 
+ p.title {
+     @include tablet {
          font-size: 5rem !important;
+     }
+ }
+ 
+ input {
+     @include tablet {
+         font-size: 3rem !important;
+     }
+ }
+ 
+ a.nav-item,
+ a.nav-item i {
+     @include tablet {
+         font-size: 2rem !important;
+     }
+ }
+ 
+ i.fa-github {
+     @include tablet {
+         display: none;
+     }
+ }
+
+h1.language-name {
+     @include tablet {
+         font-size: 12rem !important;
+     }
+ }
+
+#framework_category {
+    @include tablet {
+         font-size: 2rem !important;
      }
 }
 
-input {
+p.subtitle.is-3 {
     @include tablet {
          font-size: 3rem !important;
      }
 }
-
-
-a.nav-item, a.nav-item i {
-     @include tablet {
-         font-size: 2rem !important;
-     }
-}
-
-i.fa-github {
-     @include tablet {
-         display: none;
+i.fa-angle-up {
+    @include tablet {
+         font-size: 5rem !important;
      }
 }
