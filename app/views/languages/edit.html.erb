@@ -1,8 +1,8 @@
 <div class="container">
   <p class="title is-2">Edit  <%= @language.name %>
   </p>
-  <div class="columns">
-    <div class="column is-4"><%= render 'form' %><%= link_to 'Back', language_path(@language),  :class=>"button" %>
+  <div class="columns is-mobile">
+    <div class="column is-4-desktop is-6-mobile "><%= render 'form' %><%= link_to 'Back', language_path(@language),  :class=>"button" %>
     </div>
   </div>
 </div>
